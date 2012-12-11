@@ -1,0 +1,908 @@
+@charset "UTF-8";
+
+/* //////////////////////////////////////////////////
+[Base] 
+////////////////////////////////////////////////// */
+
+/* --------------------------------------------------
+  0. Resetting default margin and padding
+-------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, p, blockquote, th, td, form, fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+article , section , nav , aside , header , footer {
+    display: block;
+}
+
+/* --------------------------------------------------
+  1. HTML, Body, Anchor
+-------------------------------------------------- */
+html {
+    overflow-y: scroll;
+    min-height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background-image: -webkit-gradient(linear, left top, left bottom,color-stop(0, rgb(255, 255, 240)),color-stop(1, rgb(255, 255, 225)));
+  background-image: -moz-linear-gradient(-90deg,rgb(255, 255, 240) 0%,rgb(255, 255, 225) 100%);
+  background-image: linear-gradient(-90deg,rgb(255, 255, 240) 0%,rgb(255, 255, 225) 100%);
+  color: #000;
+  font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif; /* for ie6/7 */
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+a:link {
+  color: #00e;
+  text-decoration: underline;
+}
+a:visited {
+  color: #551a8b;
+  text-decoration: underline;
+}
+a:hover,
+a:active  {
+  color: #00e;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------
+  2. Heading, Paragraph
+-------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  line-height: 1.2;
+}
+/* p {} */
+
+/* --------------------------------------------------
+  3. List
+-------------------------------------------------- */
+li { list-style: none; }
+
+/* --------------------------------------------------
+  4. Table
+-------------------------------------------------- */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 100%;
+  font-family: inherit;
+}
+caption, th, td {
+  text-align: left;
+  vertical-align: top;
+  font-weight: normal;
+}
+
+/* --------------------------------------------------
+  5. Form
+-------------------------------------------------- */
+fieldset { border: none; }
+
+input, textarea, select, label {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: middle;
+}
+label { cursor: pointer; }
+
+textarea { overflow: auto; }
+
+/* --------------------------------------------------
+  6. Other
+-------------------------------------------------- */
+img {
+  border: none;
+  vertical-align: bottom;
+}
+object {
+  vertical-align: middle;
+  outline: none;
+}
+em, strong {
+  font-weight: bold;
+  font-style: normal;
+}
+abbr, acronym {
+  border: none;
+  font-variant: normal;
+}
+q:before, q:after { content: ''; }
+
+address, caption, cite, code, dfn, var {
+  font-weight: normal;
+  font-style: normal;
+}
+code, pre { font-family: monospace; }
+
+sup { vertical-align: text-top; }
+sub { vertical-align: text-bottom; }
+
+hr { display: none; }
+
+/* ------------------------------------------------------------
+  7. For IE6/7
+------------------------------------------------------------ */
+
+/* --- for ie7: page zoom bug fix --- */
+*:first-child+html body,
+*:first-child+html br { letter-spacing: 0; }
+
+/* //////////////////////////////////////////////////
+[Layout] 
+////////////////////////////////////////////////// */
+
+/* --------------------------------------------------
+  0. Container
+-------------------------------------------------- */
+#container {
+  width: 950px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------
+  1. Header
+-------------------------------------------------- */
+
+/* --------------------------------------------------
+  2. Content
+-------------------------------------------------- */
+#main {
+  float: left;
+  width: 730px;
+}
+#sub {
+  float: right;
+  width: 200px;
+}
+#controll {
+    overflow: hidden;
+    padding: 10px;
+    border-bottom: solid 1px #999;
+    background-color: #999;
+}
+    #controll input[type=button] {
+        background-color: #bbb;
+    }
+        #controll input[type=button]:hover {
+            background-color: #ddd;
+        }
+/* --------------------------------------------------
+  3. Footer
+-------------------------------------------------- */
+
+/* copyright
+----------------------------------- */
+#footer .copyright {
+  text-align: center;
+}
+
+/* //////////////////////////////////////////////////
+[Module] 
+////////////////////////////////////////////////// */
+
+/* --------------------------------------------------
+  1. Common Module
+-------------------------------------------------- */
+article {
+    position: relative;
+    padding: 30px;
+}
+#log {
+    max-height: 150px;
+    overflow: auto;
+    margin: 0 30px;
+    padding: 7px 10px;
+    border: solid 1px #999;
+    background-color: #fff;
+    word-break: break-all;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.logCntroll {
+    padding: 10px 30px;
+}
+
+#status {
+    background-color: #999;
+    border-top: solid 1px #999;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.5em;
+    padding: 5px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+input[type="button"] {
+    min-width: 2.8em;
+    margin: 0;
+    cursor: pointer;
+    background-color: #aaa;
+    border: solid 1px #666;
+
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+    #controll input[type=button] {
+        float: left;
+        border-right: none;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+    }
+    #controll input[type=button]:first-child {
+        -moz-border-radius-topleft: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        -webkit-border-top-left-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    #controll input[type=button]:last-child {
+        border-right: solid 1px #666;
+        -moz-border-radius-topright: 4px;
+        -moz-border-radius-bottomright: 4px;
+        -webkit-border-top-right-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    input[type="button"]:hover {
+        background-color: #ccc;
+    }
+
+input[type="button"].btnDel {
+    background-color: #d00;
+}
+input[type="button"].btnDel:hover {
+    background-color: #f80000;
+}
+input[type="button"].btnComp {
+    background-color: #59e;
+}
+input[type="button"].btnComp:hover {
+    background-color: #7bf;
+}
+
+.todoUnit {
+    float: left;
+}
+.todoItem {
+    position: relative;
+    display: table;
+    width: 100%;
+    overflow: hidden;
+    padding: 4px 10px;
+    border-bottom: solid 1px #eee;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+    .todoItem:last-child {
+        border-bottom: none;
+    }
+    .todoItem > * {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .todoItem:not(.run):not(.complete):hover {
+        background-image: -webkit-gradient(linear, left top, left bottom,color-stop(0, rgb(255, 255, 168)),color-stop(1, rgb(255, 224, 130)));
+        background-image: -moz-linear-gradient(-90deg,rgb(255, 255, 168) 0%,rgb(255, 224, 130) 100%);
+        background-image: linear-gradient(-90deg,rgb(255, 255, 168) 0%,rgb(255, 224, 130) 100%);
+    }
+    .todoItem.run {
+        background-image: -webkit-gradient(linear, left top, left bottom,color-stop(0, rgb(158, 210, 255)),color-stop(1, rgb(82, 151, 255)));
+        background-image: -moz-linear-gradient(-90deg,rgb(158, 210, 255) 0%,rgb(82, 151, 255) 100%);
+        background-image: linear-gradient(-90deg,rgb(158, 210, 255) 0%,rgb(82, 151, 255) 100%);
+    }
+    .todoItem .todoCtrl {
+        white-space: nowrap;
+        width: 110px;
+        padding-left: 10px;
+        text-align: right;
+    }
+    .todoItem .todoCtrl2 {
+        display: none;
+        width: 110px;
+        padding-left: 10px;
+        text-align: right;
+    }
+    .todoItem.complete {
+        color: #aaa;
+    }
+    .todoItem.complete .todoCtrl {
+        display: none;
+    }
+    .todoItem.complete .todoCtrl2 {
+        display: table-cell;
+    }
+
+.running .todoItem:not(.run) {
+    color: #999;
+}
+.running .todoItem:not(.run):not(.complete):hover {
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+.todoInput {
+    display: table;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 4px;
+    border-bottom: solid 1px #eee;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+    .todoInput > * {
+        display: table-cell;
+    }
+.todoInput input[type="text"] {
+    padding: 5px 8px;
+}
+.todoTxt {
+    width: 300px;
+}
+.todoTxtItem {
+}
+.todoTime {
+    width: 170px;
+}
+.todoTxtItem {
+    margin-right: 2em;
+}
+.todoTimeItem , .todoPastTimeItem {
+    white-space: nowrap;
+    width: 100px;
+}
+
+
+.note {
+    color: #333;
+    font-size: 77%;
+}
+.running .note {
+    color: #999;
+}
+.complete .note {
+    color: #aaa;
+}
+
+.ttlGroup {
+    border-bottom: dotted 1px #ccc;
+    padding: 5px 10px;
+    font-weight: bold;
+    background-color: #999;
+    -moz-box-shadow: 0 0 0 1px rgba(255,255,255,0.7) inset;
+    -webkit-box-shadow: 0 0 0 1px rgba(255,255,255,0.7) inset;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.7) inset;
+}
+.groupBox {
+    border: solid 1px #ccc;
+    min-height: 30px;
+    margin-top: 10px;
+}
+
+/* --------------------------------------------------
+  90. Other
+-------------------------------------------------- */
+.btn { cursor: pointer; }
+
+/* for Voice Browser */
+.hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Noscript Message */
+#msgNoscript {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  padding: 5px 0;
+  border-top: 1px solid #f00;
+  border-bottom: 1px solid #f00;
+  background: #fcc;
+  color: #f00;
+  line-height: 1.2;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------
+  99. Clearfix
+-------------------------------------------------- */
+.group { *zoom: 1; } /* for ie6/7 */
+.group:after { content: ""; display: block; clear: both; }
+@charset "UTF-8";
+
+/*
+  [Base]
+    0. Resetting default margin and padding
+    1. HTML, Body, Anchor
+    2. Heading, Paragraph
+    3. List
+    4. Table
+    5. Form
+    6. Other
+    7. For IE6/7
+
+  [Layout]
+    0. Container
+    1. Header
+    2. Content
+    3. Footer
+
+  [Module]
+    1. Common Module
+    90. Other
+    99. Clearfix
+*/
+
+/* //////////////////////////////////////////////////
+[Base] 
+////////////////////////////////////////////////// */
+
+/* --------------------------------------------------
+  0. Resetting default margin and padding
+-------------------------------------------------- */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, p, blockquote, th, td, form, fieldset, legend {
+  margin: 0;
+  padding: 0;
+}
+
+article , section , nav , aside , header , footer {
+    display: block;
+}
+
+/* --------------------------------------------------
+  1. HTML, Body, Anchor
+-------------------------------------------------- */
+html {
+    overflow-y: scroll;
+    min-height: 100%;
+}
+
+body {
+  overflow: hidden;
+  background-image: -webkit-gradient(linear, left top, left bottom,color-stop(0, rgb(255, 255, 240)),color-stop(1, rgb(255, 255, 225)));
+  background-image: -moz-linear-gradient(-90deg,rgb(255, 255, 240) 0%,rgb(255, 255, 225) 100%);
+  background-image: linear-gradient(-90deg,rgb(255, 255, 240) 0%,rgb(255, 255, 225) 100%);
+  color: #000;
+  font-family: "メイリオ", Meiryo, "ＭＳ Ｐゴシック", sans-serif; /* for ie6/7 */
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+a:link {
+  color: #00e;
+  text-decoration: underline;
+}
+a:visited {
+  color: #551a8b;
+  text-decoration: underline;
+}
+a:hover,
+a:active  {
+  color: #00e;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------
+  2. Heading, Paragraph
+-------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  line-height: 1.2;
+}
+/* p {} */
+
+/* --------------------------------------------------
+  3. List
+-------------------------------------------------- */
+li { list-style: none; }
+
+/* --------------------------------------------------
+  4. Table
+-------------------------------------------------- */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 100%;
+  font-family: inherit;
+}
+caption, th, td {
+  text-align: left;
+  vertical-align: top;
+  font-weight: normal;
+}
+
+/* --------------------------------------------------
+  5. Form
+-------------------------------------------------- */
+fieldset { border: none; }
+
+input, textarea, select, label {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: middle;
+}
+label { cursor: pointer; }
+
+textarea { overflow: auto; }
+
+/* --------------------------------------------------
+  6. Other
+-------------------------------------------------- */
+img {
+  border: none;
+  vertical-align: bottom;
+}
+object {
+  vertical-align: middle;
+  outline: none;
+}
+em, strong {
+  font-weight: bold;
+  font-style: normal;
+}
+abbr, acronym {
+  border: none;
+  font-variant: normal;
+}
+q:before, q:after { content: ''; }
+
+address, caption, cite, code, dfn, var {
+  font-weight: normal;
+  font-style: normal;
+}
+code, pre { font-family: monospace; }
+
+sup { vertical-align: text-top; }
+sub { vertical-align: text-bottom; }
+
+hr { display: none; }
+
+/* ------------------------------------------------------------
+  7. For IE6/7
+------------------------------------------------------------ */
+
+/* --- for ie7: page zoom bug fix --- */
+*:first-child+html body,
+*:first-child+html br { letter-spacing: 0; }
+
+/* //////////////////////////////////////////////////
+[Layout] 
+////////////////////////////////////////////////// */
+
+/* --------------------------------------------------
+  0. Container
+-------------------------------------------------- */
+#container {
+  width: 950px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------
+  1. Header
+-------------------------------------------------- */
+
+/* --------------------------------------------------
+  2. Content
+-------------------------------------------------- */
+#main {
+  float: left;
+  width: 730px;
+}
+#sub {
+  float: right;
+  width: 200px;
+}
+#controll {
+    overflow: hidden;
+    padding: 10px;
+    border-bottom: solid 1px #999;
+    background-color: #999;
+}
+    #controll input[type=button] {
+        background-color: #bbb;
+    }
+        #controll input[type=button]:hover {
+            background-color: #ddd;
+        }
+/* --------------------------------------------------
+  3. Footer
+-------------------------------------------------- */
+
+/* copyright
+----------------------------------- */
+#footer .copyright {
+  text-align: center;
+}
+
+/* //////////////////////////////////////////////////
+[Module] 
+////////////////////////////////////////////////// */
+
+/* --------------------------------------------------
+  1. Common Module
+-------------------------------------------------- */
+article {
+    position: relative;
+    padding: 30px;
+}
+#log {
+    max-height: 150px;
+    overflow: auto;
+    margin: 0 30px;
+    padding: 7px 10px;
+    border: solid 1px #999;
+    background-color: #fff;
+    word-break: break-all;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.logCntroll {
+    padding: 10px 30px;
+}
+
+#status {
+    background-color: #999;
+    border-top: solid 1px #999;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.5em;
+    padding: 5px;
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+}
+
+#result {
+    position: absolute;
+    top: -39px;
+    right: 7px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: solid 1px #999;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3) inset;
+}
+input[type="button"] {
+    min-width: 2.8em;
+    margin: 0;
+    cursor: pointer;
+    background-color: #aaa;
+    border: solid 1px #666;
+
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+    #controll input[type=button] {
+        float: left;
+        border-right: none;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        border-radius: 0;
+    }
+    #controll input[type=button]:first-child {
+        -moz-border-radius-topleft: 4px;
+        -moz-border-radius-bottomleft: 4px;
+        -webkit-border-top-left-radius: 4px;
+        -webkit-border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+    #controll input[type=button]:last-child {
+        border-right: solid 1px #666;
+        -moz-border-radius-topright: 4px;
+        -moz-border-radius-bottomright: 4px;
+        -webkit-border-top-right-radius: 4px;
+        -webkit-border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    input[type="button"]:hover {
+        background-color: #ccc;
+    }
+
+input[type="button"].btnDel {
+    background-color: #d00;
+}
+input[type="button"].btnDel:hover {
+    background-color: #f80000;
+}
+input[type="button"].btnComp {
+    background-color: #59e;
+}
+input[type="button"].btnComp:hover {
+    background-color: #7bf;
+}
+
+.todoUnit {
+    float: left;
+}
+.todoItem {
+    position: relative;
+    display: table;
+    width: 100%;
+    overflow: hidden;
+    padding: 4px 10px;
+    border-bottom: solid 1px #eee;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+    .todoItem:last-child {
+        border-bottom: none;
+    }
+    .todoItem > * {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .todoItem:not(.run):not(.complete):hover {
+        background-image: -webkit-gradient(linear, left top, left bottom,color-stop(0, rgb(255, 255, 168)),color-stop(1, rgb(255, 224, 130)));
+        background-image: -moz-linear-gradient(-90deg,rgb(255, 255, 168) 0%,rgb(255, 224, 130) 100%);
+        background-image: linear-gradient(-90deg,rgb(255, 255, 168) 0%,rgb(255, 224, 130) 100%);
+    }
+    .todoItem.run {
+        background-image: -webkit-gradient(linear, left top, left bottom,color-stop(0, rgb(158, 210, 255)),color-stop(1, rgb(82, 151, 255)));
+        background-image: -moz-linear-gradient(-90deg,rgb(158, 210, 255) 0%,rgb(82, 151, 255) 100%);
+        background-image: linear-gradient(-90deg,rgb(158, 210, 255) 0%,rgb(82, 151, 255) 100%);
+    }
+    .todoItem .todoCtrl {
+        white-space: nowrap;
+        width: 110px;
+        padding-left: 10px;
+        text-align: right;
+    }
+    .todoItem .todoCtrl2 {
+        display: none;
+        width: 110px;
+        padding-left: 10px;
+        text-align: right;
+    }
+    .todoItem.complete {
+        color: #aaa;
+    }
+    .todoItem.complete .todoCtrl {
+        display: none;
+    }
+    .todoItem.complete .todoCtrl2 {
+        display: table-cell;
+    }
+
+.running .todoItem:not(.run) {
+    color: #999;
+}
+.running .todoItem:not(.run):not(.complete):hover {
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+.todoInput {
+    display: table;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 4px;
+    border-bottom: solid 1px #eee;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+    .todoInput > * {
+        display: table-cell;
+    }
+.todoInput input[type="text"] {
+    padding: 5px 8px;
+}
+.todoTxt {
+    width: 300px;
+}
+.todoTxtItem {
+}
+.todoTime {
+    width: 170px;
+}
+.todoTxtItem {
+    margin-right: 2em;
+}
+.todoTimeItem , .todoPastTimeItem {
+    white-space: nowrap;
+    width: 100px;
+}
+
+
+.note {
+    color: #333;
+    font-size: 77%;
+}
+.running .note {
+    color: #999;
+}
+.complete .note {
+    color: #aaa;
+}
+
+.ttlGroup {
+    border-bottom: dotted 1px #ccc;
+    padding: 5px 10px;
+    font-weight: bold;
+    background-color: #999;
+    -moz-box-shadow: 0 0 0 1px rgba(255,255,255,0.7) inset;
+    -webkit-box-shadow: 0 0 0 1px rgba(255,255,255,0.7) inset;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.7) inset;
+}
+.groupBox {
+    border: solid 1px #ccc;
+    min-height: 30px;
+    margin-top: 10px;
+}
+
+/* --------------------------------------------------
+  90. Other
+-------------------------------------------------- */
+.btn { cursor: pointer; }
+
+/* for Voice Browser */
+.hidden {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Noscript Message */
+#msgNoscript {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  padding: 5px 0;
+  border-top: 1px solid #f00;
+  border-bottom: 1px solid #f00;
+  background: #fcc;
+  color: #f00;
+  line-height: 1.2;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------
+  99. Clearfix
+-------------------------------------------------- */
+.group { *zoom: 1; } /* for ie6/7 */
+.group:after { content: ""; display: block; clear: both; }
